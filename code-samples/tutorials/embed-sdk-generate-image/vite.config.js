@@ -12,8 +12,6 @@ governing permissions and limitations under the License.
 
 import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
-// import fs from "fs";
-
 export default defineConfig({
   root: "src",
   server: {
