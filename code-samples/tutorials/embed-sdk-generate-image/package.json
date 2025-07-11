@@ -1,0 +1,28 @@
+{
+  "name": "embed-sdk-generate-image",
+  "version": "1.0.0",
+  "description": "Adobe Express Embed SDK Generate Image sample",
+  "type": "module",
+  "keywords": [
+    "Embed SDK",
+    "Adobe Express"
+  ],
+  "author": "Davide Barranca",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "./node_modules/.bin/vite",
+    "build": "./node_modules/.bin/vite build",
+    "preview": "./node_modules/.bin/vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.3",
+    "vite-plugin-mkcert": "^1.17.8"
+  },
+  "dependencies": {
+    "@spectrum-web-components/button": "^1.7.0",
+    "@spectrum-web-components/button-group": "^1.7.0",
+    "@spectrum-web-components/divider": "^1.7.0",
+    "@spectrum-web-components/theme": "^1.7.0",
+    "uuid": "^11.1.0"
+  }
+}
