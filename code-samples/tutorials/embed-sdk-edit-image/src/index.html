@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embed SDK Sample</title>
+</head>
+
+<body>
+  <sp-theme scale="medium" color="light" system="express">
+    <div class="container">
+      <header>
+        <h1>Adobe Express Embed SDK</h1>
+        <sp-divider size="l"></sp-divider>
+        <h2>Full Editor Sample</h2>
+        <p>
+          The <b>Create Design</b> button launches a blank new project in a full editor instance. <br />
+          Once you have published/saved a project, use <b>Edit Design</b> to resume editing the same project.
+        </p>
+      </header>
+
+      <main>
+        <img id="savedImage" src="https://placehold.co/300x300?text=Placeholder+Image&font=source-sans-pro"
+          alt="Your design will appear here." />
+        <sp-button-group>
+          <sp-button id="createBtn">Create New</sp-button>
+          <sp-button id="editBtn" disabled>Edit</sp-button>
+        </sp-button-group>
+      </main>
+    </div>
+  </sp-theme>
+
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>

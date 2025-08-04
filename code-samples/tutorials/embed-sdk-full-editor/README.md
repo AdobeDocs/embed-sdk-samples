@@ -1,14 +1,14 @@
 # Adobe Express Embed SDK Full Editor tutorial
 
-This sample project is a companion to the [Full Editor](https://developer.adobe.com/express/embed-sdk/docs/guides/tutorials/full-editor/) tutorial for the Adobe Express Embed SDK. 
+This sample project is a companion to the [Full Editor](https://developer.adobe.com/express/embed-sdk/docs/guides/tutorials/full-editor/) tutorial for the Adobe Express Embed SDK.
 
 ## Running the sample
 
 1. Make sure you have an Embed SDK API Key. If you don't have one, follow the instructions in the [Quickstart guide](https://developer.adobe.com/express/embed-sdk/docs/guides/quickstart/).
-2. Locate the `.env` file in the project root and add your Embed SDK API Key to the `API_KEY` field.
+2. Locate the `.env` file in the project root and add your Embed SDK API Key to the `API_KEY` field. Your API Key should allowlist `localhost:5555`.
 
 ```bash
-VITE_API_KEY="your-api-key-here!"
+VITE_API_KEY="replace-with-your-Embed-SDK-API-key-allowlisting-localhost:5555"
 ```
 
 3. Install the dependencies:
