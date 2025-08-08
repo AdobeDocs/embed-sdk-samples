@@ -88,6 +88,15 @@ const appConfig = {
   communityWallConfig: {
     fetchCommunityAssets,
   },
+  promptInputPlaceholder:
+    "A cat on a leather armchair sipping various cocktails",
+  panelSettings: {
+    contentType: { value: "graphic" }, // 👈 Preselect the dropdown
+    styles: {
+      value: ["vector_look", "pop_art", "divine"], // 👈 Set the Styles
+    },
+  },
+  // isPromptSafe: async (prompt) => { /* ... */ },
   callbacks,
 };
 
