@@ -13,20 +13,19 @@
       <header>
         <h1>Adobe Express Embed SDK</h1>
         <sp-divider size="l"></sp-divider>
-        <h2>Full Editor Sample</h2>
+        <h2>Edit Image Sample</h2>
         <p>
-          The <b>Create Design</b> button launches a blank new project in a full editor instance. <br />
-          Once you have published/saved a project, use <b>Edit Design</b> to resume editing the same project.
+          The <b>Edit Image</b> button launches an image editor instance.
         </p>
       </header>
 
       <main>
-        <img id="savedImage" src="https://placehold.co/300x300?text=Placeholder+Image&font=source-sans-pro"
-          alt="Your design will appear here." />
+        <img id="image" src="./images/demo-image-1.jpg" alt="An Indian woman holding a cat" />
         <sp-button-group>
-          <sp-button id="createBtn">Create New</sp-button>
-          <sp-button id="editBtn" disabled>Edit</sp-button>
+          <sp-button id="uploadBtn">Choose Image</sp-button>
+          <sp-button id="editBtn">Edit Image</sp-button>
         </sp-button-group>
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" />
       </main>
     </div>
   </sp-theme>

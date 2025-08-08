@@ -63,14 +63,13 @@ p {
   width: 100%;
 }
 
-#savedImage {
+#image {
   max-width: 100%; /* Allow image to scale down with the container width */
   max-height: 300px; /* Maximum height, adjusts to keep aspect ratio */
   width: auto; /* Width adjusts automatically based on max-height */
-  background-color: var(--spectrum-global-color-gray-200);
   margin-bottom: 25px;
   border-radius: 8px;
-  border: 1px dashed #5258e4;
+  border: 1px solid #5258e4;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   object-fit: contain; /* Ensures the image fits inside without stretching */
 }

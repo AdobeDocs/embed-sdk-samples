@@ -19,6 +19,11 @@ export default defineConfig({
   server: {
     https: true,
     port: 5555,
+    cors: {
+      // origin is needed if you want to use asset of type "url"
+      origin: "https://quick-actions.express.adobe.com",
+      credentials: true,
+    },
   },
   build: {
     outDir: "../dist",
