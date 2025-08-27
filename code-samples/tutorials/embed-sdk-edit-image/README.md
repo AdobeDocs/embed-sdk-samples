@@ -1,6 +1,6 @@
-# Adobe Express Embed SDK Full Editor tutorial
+# Adobe Express Embed SDK Edit Image tutorial
 
-This sample project is a companion to the [Generate Image](https://developer.adobe.com/express/embed-sdk/docs/guides/tutorials/generate-image/) tutorial for the Adobe Express Embed SDK.
+This sample project is a companion to the [Edit Image](https://developer.adobe.com/express/embed-sdk/docs/guides/tutorials/edit-image/) tutorial for the Adobe Express Embed SDK.
 
 ## Running the sample
 
