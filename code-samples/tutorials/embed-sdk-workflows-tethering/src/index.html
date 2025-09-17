@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embed SDK Sample</title>
+</head>
+
+<body>
+  <sp-theme scale="medium" color="light" system="express">
+    <div class="container">
+      <header>
+        <h1>Adobe Express Embed SDK</h1>
+        <sp-divider size="l"></sp-divider>
+        <h2>Workflows Tethering Sample</h2>
+        <p>
+          Click either CTA button to test the tethered experiences.
+        </p>
+      </header>
+
+      <main class="two-column-layout">
+        <div class="column">
+          <h3>Generate Image → Edit Image</h3>
+          <img id="image1" src="./images/generate-image.png" alt="Generate Image" />
+          <sp-button-group>
+            <sp-button id="generateBtn">Generate Image</sp-button>
+          </sp-button-group>
+          <input type="file" id="fileInput1" accept="image/*" style="display: none;" />
+        </div>
+        <div class="column">
+          <h3>Edit Image → Full Editor</h3>
+          <img id="image2" src="./images/demo-image-1.jpg" alt="An Indian woman holding a cat" />
+          <sp-button-group>
+            <sp-button id="uploadBtn" treatment="outline">Choose Image</sp-button>
+            <sp-button id="editBtn">Edit Image</sp-button>
+          </sp-button-group>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+        </div>
+      </main>
+    </div>
+  </sp-theme>
+
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>
