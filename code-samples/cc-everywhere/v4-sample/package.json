@@ -6,6 +6,7 @@
     "@spectrum-css/sidenav": "^4.2.2",
     "@spectrum-css/textfield": "^6.1.4",
     "@spectrum-css/typography": "^5.0.24",
-    "@spectrum-css/vars": "^9.0.8"
+    "@spectrum-css/vars": "^9.0.8",
+    "@spectrum-css/tokens": "^16.0.0"
   }
 }
