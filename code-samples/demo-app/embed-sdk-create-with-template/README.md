@@ -5,10 +5,10 @@ This sample project demonstrates how to use the Adobe Express Embed SDK to creat
 ## Running the sample
 
 1. Make sure you have an Embed SDK API Key. If you don't have one, follow the instructions in the [Quickstart guide](https://developer.adobe.com/express/embed-sdk/docs/guides/quickstart/).
-2. Locate the `.env` file in the `src` directory and add your Embed SDK API Key to the `VITE_API_KEY` field. Your API Key should allowlist `localhost:8000`.
+2. Locate the `.env` file in the `src` directory and add your Embed SDK API Key to the `VITE_API_KEY` field. Your API Key should allowlist `localhost:5555`.
 
 ```bash
-VITE_API_KEY="replace-with-your-Embed-SDK-API-key-allowlisting-localhost:8000"
+VITE_API_KEY="replace-with-your-Embed-SDK-API-key-allowlisting-localhost:5555"
 ```
 
 3. Install the dependencies:
@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-5. Open your browser and navigate to [https://localhost:8000](https://localhost:8000).
+5. Open your browser and navigate to [https://localhost:5555](https://localhost:5555).
 
 ## Learn more
 

@@ -17,7 +17,11 @@ export default defineConfig({
   root: "src",
   server: {
     https: true,
-    port: 8000,
+    port: 5555,
+    cors: {
+      origin: "https://quick-actions.express.adobe.com",
+      credentials: true,
+    },
   },
   build: {
     outDir: "../dist",

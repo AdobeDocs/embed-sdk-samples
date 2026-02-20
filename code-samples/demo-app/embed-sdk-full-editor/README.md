@@ -1,6 +1,6 @@
-# Adobe Express Embed SDK Generate QR Code tutorial
+# Adobe Express Embed SDK Full Editor Sample
 
-This sample project demonstrates the Generate QR Code quick action for the Adobe Express Embed SDK.
+This sample project demonstrates how to use the Adobe Express Embed SDK to create and edit designs using the full editor.
 
 ## Running the sample
 
@@ -27,4 +27,4 @@ npm start
 
 ## Learn more
 
-Please refer to the [Tutorial](https://developer.adobe.com/express/embed-sdk/docs/guides/tutorials/) for a detailed guide on how to use this sample project.
+Please refer to the [Adobe Express Embed SDK Documentation](https://developer.adobe.com/express/embed-sdk/docs/) for more information.
