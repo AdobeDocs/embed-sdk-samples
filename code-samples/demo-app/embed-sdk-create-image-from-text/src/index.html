@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embed SDK Sample - Create Image From Text</title>
+</head>
+
+<body>
+  <sp-theme scale="medium" color="light" system="express">
+    <div class="container">
+      <header>
+        <h1>Adobe Express Embed SDK</h1>
+        <sp-divider size="l"></sp-divider>
+        <h2>Create Image From Text Sample</h2>
+        <p>
+          The <b>Generate Image</b> button generates an image from a text prompt using AI.
+        </p>
+      </header>
+
+      <main>
+        <div class="config-section">
+          <h3 class="config-toggle" id="config-toggle">
+            Configuration Options <span class="toggle-icon">▼</span>
+          </h3>
+          <div class="config-content" id="config-content">
+            <div class="config-group">
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="community-wall" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="community-wall">Community Wall</label>
+              </div>
+
+              <div class="gen-v2-sub-option" id="custom-community-wall-container" style="display: block;">
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="custom-community-wall">
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="custom-community-wall">Custom Community Wall</label>
+                </div>
+              </div>
+
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="fast-mode" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="fast-mode">FastMode</label>
+              </div>
+
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="custom-modal" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="custom-modal">Custom Modal</label>
+              </div>
+            </div>
+
+            <div class="config-group">
+              <h4>Thumbnail</h4>
+              
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="edit-dropdown" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="edit-dropdown">EditDropdown</label>
+              </div>
+
+              <div class="gen-v2-sub-option" id="edit-dropdown-options-container" style="display: block;">
+                <h5>EditDropDown Options</h5>
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="add-effects" checked>
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="add-effects">Add effects</label>
+                </div>
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="remove-background" checked>
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="remove-background">Remove background</label>
+                </div>
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="apply-adjustment">
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="apply-adjustment">Apply adjustment</label>
+                </div>
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="insert-object">
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="insert-object">Insert object</label>
+                </div>
+                <div class="spectrum-Checkbox">
+                  <input type="checkbox" class="spectrum-Checkbox-input" id="remove-object">
+                  <span class="spectrum-Checkbox-box"></span>
+                  <label class="spectrum-Checkbox-label" for="remove-object">Remove object</label>
+                </div>
+              </div>
+
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="rich-preview" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="rich-preview">Rich Preview</label>
+              </div>
+
+              <div class="spectrum-Checkbox">
+                <input type="checkbox" class="spectrum-Checkbox-input" id="publish" checked>
+                <span class="spectrum-Checkbox-box"></span>
+                <label class="spectrum-Checkbox-label" for="publish">Publish</label>
+              </div>
+
+              <div class="gen-v2-sub-option" id="publish-label-container" style="display: block;">
+                <div class="spectrum-Textfield">
+                  <label for="publish-label" class="spectrum-FieldLabel">Publish Label</label>
+                  <input id="publish-label" type="text" name="publish-label" value="" class="spectrum-Textfield-input"
+                    placeholder="Enter publish label">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="output-container">
+          <p class="placeholder-text">Your generated image will appear here</p>
+          <img id="savedImage" src="" alt="Generated image" style="display: none;" />
+        </div>
+        <sp-button-group>
+          <sp-button id="generateBtn">Generate Image</sp-button>
+        </sp-button-group>
+      </main>
+    </div>
+  </sp-theme>
+
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>

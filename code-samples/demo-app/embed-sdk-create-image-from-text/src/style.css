@@ -1,0 +1,328 @@
+/*
+Copyright 2024 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
+
+body {
+  margin-top: 40px;
+  background-color: #e9e9e9;
+}
+sp-theme {
+  padding: 0px 40px;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--spectrum-global-color-gray-50);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: var(--spectrum-heading-size-xl);
+  margin-bottom: 10px;
+}
+
+sp-divider {
+  width: 70%;
+  margin: 20px auto;
+}
+
+h2 {
+  font-size: var(--spectrum-heading-size-m);
+  margin: 10px 0;
+}
+
+p {
+  font-size: var(--spectrum-body-size-l);
+  margin-bottom: 30px;
+  color: var(--spectrum-global-color-gray-700);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#output-container {
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: 1px solid #5258e4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  padding: 20px;
+}
+
+#output-container img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.placeholder-text {
+  color: var(--spectrum-global-color-gray-500);
+  font-style: italic;
+}
+
+sp-button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* Configuration Section */
+.config-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.config-toggle {
+  cursor: pointer;
+  user-select: none;
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #323232;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.config-toggle:hover {
+  background-color: #e8e8e8;
+}
+
+.toggle-icon {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.config-section.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.config-content {
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 0 0 6px 6px;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.config-section.collapsed .config-content {
+  display: none;
+}
+
+.config-group {
+  margin-bottom: 24px;
+}
+
+.config-group:last-child {
+  margin-bottom: 0;
+}
+
+.config-group h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #4a4a4a;
+  padding-left: 0;
+}
+
+.config-group h5 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 12px 0 8px 0;
+  color: #666;
+  padding-left: 0;
+}
+
+/* Checkbox Styles */
+.spectrum-Checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  min-height: 22px;
+  width: 100%;
+}
+
+.spectrum-Checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.spectrum-Checkbox-box {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #757575;
+  border-radius: 3px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.spectrum-Checkbox-input:checked ~ .spectrum-Checkbox-box {
+  background-color: #2680eb;
+  border-color: #2680eb;
+}
+
+.spectrum-Checkbox-input:checked ~ .spectrum-Checkbox-box::after {
+  content: '✓';
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1;
+  display: block;
+}
+
+.spectrum-Checkbox:hover .spectrum-Checkbox-box {
+  border-color: #2680eb;
+}
+
+.spectrum-Checkbox-input:hover ~ .spectrum-Checkbox-box {
+  border-color: #2680eb;
+}
+
+.spectrum-Checkbox-input:focus ~ .spectrum-Checkbox-box {
+  box-shadow: 0 0 0 2px rgba(38, 128, 235, 0.3);
+}
+
+.spectrum-Checkbox-label {
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: #323232;
+  line-height: 1.4;
+  margin-left: 24px;
+  font-weight: 400;
+  flex: 1;
+}
+
+/* Sub-option indentation */
+.gen-v2-sub-option {
+  margin-left: 24px;
+  padding-left: 12px;
+  border-left: 2px solid #e0e0e0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.gen-v2-sub-option .spectrum-Checkbox {
+  margin-bottom: 8px;
+  padding-left: 0;
+  position: relative;
+}
+
+.gen-v2-sub-option .spectrum-Checkbox-input {
+  left: 0;
+}
+
+.gen-v2-sub-option .spectrum-Checkbox-box {
+  left: 0;
+}
+
+.gen-v2-sub-option .spectrum-Checkbox-label {
+  margin-left: 24px;
+}
+
+.gen-v2-sub-option .spectrum-Textfield {
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.gen-v2-sub-option .spectrum-FieldLabel {
+  padding-left: 0;
+}
+
+/* Textfield Styles */
+.spectrum-Textfield {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.spectrum-Textfield-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  margin-top: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.spectrum-Textfield-input:hover {
+  border-color: #757575;
+}
+
+.spectrum-Textfield-input:focus {
+  outline: none;
+  border-color: #2680eb;
+  box-shadow: 0 0 0 2px rgba(38, 128, 235, 0.2);
+}
+
+.spectrum-FieldLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #4a4a4a;
+  padding-left: 0;
+}
