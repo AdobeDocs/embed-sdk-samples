@@ -1,0 +1,27 @@
+{
+  "name": "embed-sdk-create-with-template",
+  "version": "1.0.0",
+  "description": "Adobe Express Embed SDK Create With Template sample",
+  "type": "module",
+  "keywords": [
+    "Embed SDK",
+    "Adobe Express"
+  ],
+  "author": "Davide Barranca",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.6",
+    "vite-plugin-mkcert": "^1.17.8"
+  },
+  "dependencies": {
+    "@spectrum-web-components/button": "^1.7.0",
+    "@spectrum-web-components/button-group": "^1.7.0",
+    "@spectrum-web-components/divider": "^1.7.0",
+    "@spectrum-web-components/theme": "^1.7.0"
+  }
+}
