@@ -28,3 +28,23 @@ yarn.lock
 
 # Windows
 Thumbs.db
+
+# Android
+.gradle/
+local.properties
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# iOS / Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+Pods/
+Carthage/Build/
+*.ipa
+*.dSYM.zip
+*.dSYM

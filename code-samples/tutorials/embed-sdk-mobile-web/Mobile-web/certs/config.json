@@ -1,0 +1,15 @@
+{
+  "record": {
+    "hosts": [
+      "localhost",
+      "127.0.0.1",
+      "10.0.0.13",
+      "::1"
+    ],
+    "hash": {
+      "key": "900a5f8689bf165a1195707b2ab143db3879f785574965ba353cbf52fc277017",
+      "cert": "5df83c1635d6533bb116c378ac040ea055b982ebf57b1b23cdb934d2a92c3890"
+    }
+  },
+  "configFilePath": "/Users/barranca/Documents/Github/Github_DEVEX/tutorial-embed-mobile-web/Web-embed/certs/config.json"
+}

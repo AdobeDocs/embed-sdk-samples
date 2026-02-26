@@ -1,0 +1,35 @@
+{
+  "name": "embed-sdk-mweb-demo",
+  "version": "1.0.0",
+  "description": "Adobe Express Embed SDK mWeb demo with Vite client and Express HTTPS server",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "predev": "npm run gen:cert",
+    "dev": "concurrently -k -n VITE,EXPRESS -c cyan,green \"vite\" \"node server/index.js --dev\"",
+    "dev:vite": "vite",
+    "dev:server": "node server/index.js --dev",
+    "build": "vite build",
+    "prestart": "npm run gen:cert",
+    "start": "node server/index.js --prod",
+    "gen:cert": "node ./scripts/gen-cert.js",
+    "gen:cert:openssl": "bash ./scripts/gen-cert.sh",
+    "ngrok": "ngrok http https://localhost:5566 --host-header='localhost: 5566'"
+  },
+  "dependencies": {
+    "@spectrum-web-components/badge": "^1.11.2",
+    "@spectrum-web-components/button": "^1.7.0",
+    "@spectrum-web-components/divider": "^1.7.0",
+    "@spectrum-web-components/field-label": "^1.11.2",
+    "@spectrum-web-components/textfield": "^1.11.2",
+    "@spectrum-web-components/theme": "^1.7.0",
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^3.0.3",
+    "is-mobile": "^5.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "vite": "^7.0.6",
+    "vite-plugin-mkcert": "^1.17.8"
+  }
+}

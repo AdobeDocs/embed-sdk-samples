@@ -1,0 +1,15 @@
+version: 3
+
+tunnels:
+  app:
+    proto: http
+    addr: 5566
+    traffic_policy:
+      on_http_request:
+        - actions:
+            - type: add-headers
+              config:
+                headers:
+                  request:
+                    set:
+                      Host: "localhost:5566"
