@@ -54,7 +54,7 @@ const callbacks = {
     expressImage.src = publishParams.asset[0].data;
     console.log("Image data", publishParams.asset[0].data);
     // enable the editDesign button
-    document.getElementById("editDesign").disabled = false;
+    document.getElementById("editBtn").disabled = false;
   },
   onError: (err) => {
     console.error("Error!", err.toString());
