@@ -20,6 +20,3 @@ Please refer to the [Adobe Express Embed SDK Overview](https://developer.adobe.c
 ## Contributing
 
 We welcome contributions to this repository. Please read the [Code of Conduct](./CODE_OF_CONDUCT.md) for more information.
-
-> [!CAUTION]
-> For the time being, `.gitignore` is **not excluding** `.env` files from the repository. Please make sure you **do not** commit any `.env` files that contain sensitive information.

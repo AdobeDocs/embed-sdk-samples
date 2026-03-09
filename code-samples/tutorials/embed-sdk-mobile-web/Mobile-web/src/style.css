@@ -1,0 +1,137 @@
+:root {
+  --shell-max: 1080px;
+  --card-radius: 16px;
+  --card-border: #d7dce2;
+  --surface: #f4f7fb;
+  --ink-soft: #394956;
+  --brand-accent: #0b60d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle at 20% -10%,
+    #d9e8ff 0%,
+    #eef3f9 45%,
+    #edf2f7 100%
+  );
+  color: #0f1f2e;
+  font-family: "Adobe Clean", "Segoe UI", sans-serif;
+}
+
+sp-theme {
+  min-height: 100vh;
+  display: block;
+  padding: 24px 16px 28px;
+}
+
+.page-shell {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+}
+
+.hero {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 24px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 8px 0 4px;
+  font-size: clamp(1.55rem, 2.3vw, 2.15rem);
+}
+
+.summary {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+sp-divider {
+  margin-top: 18px;
+}
+
+.content-grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+}
+
+sp-textfield {
+  width: 100%;
+}
+
+textarea:focus {
+  outline: 2px solid #6ca1ef;
+  outline-offset: 1px;
+}
+
+.platform-row {
+  margin: 10px 0 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+}
+
+sp-button {
+  width: 100%;
+}
+
+.status-text {
+  margin: 12px 0 0;
+  min-height: 20px;
+  font-size: 0.9rem;
+  color: #486074;
+}
+
+#savedImage {
+  width: 100%;
+  min-height: 250px;
+  border: 1px dashed #9ab0c8;
+  border-radius: 14px;
+  background: #fff;
+  object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  sp-theme {
+    padding: 34px 24px;
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(320px, 1fr) 1.35fr;
+  }
+
+  #savedImage {
+    min-height: 380px;
+  }
+}

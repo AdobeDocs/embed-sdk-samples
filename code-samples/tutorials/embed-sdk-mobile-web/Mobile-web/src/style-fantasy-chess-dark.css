@@ -1,0 +1,311 @@
+:root {
+  --shell-max: 1280px;
+  --card-radius: 18px;
+  --card-border: #434b71;
+  --surface: #232843;
+  --ink-soft: #a8b0d4;
+  --ink-strong: #eef1ff;
+  --royal: #dce1ff;
+  --aside-surface: #222845;
+  --main-surface: #1d2440;
+  --board-deep: rgba(112, 122, 255, 0.24);
+  --board-deeper: rgba(58, 68, 122, 0.62);
+  --board-accent: #7b84ff;
+  --board-light-square: rgba(255, 255, 255, 0.09);
+  --board-dark-square: rgba(32, 40, 88, 0.16);
+  --badge-accent: #5258e4;
+  --badge-fill: #2f3768;
+  --badge-fill-strong: #252d58;
+  --badge-border: #6c74f2;
+  --badge-image-border: #7b84ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.fantasy-theme {
+  margin: 0;
+  background: radial-gradient(circle at 14% -12%, #4a54a0 0%, #2a335f 44%, #1b2343 100%);
+  color: var(--ink-strong);
+  font-family: "Adobe Clean", "Segoe UI", sans-serif;
+}
+
+body.fantasy-theme sp-theme {
+  min-height: 100vh;
+  display: block;
+  padding: 16px;
+}
+
+body.fantasy-theme .fantasy-shell {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+body.fantasy-theme .card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(14, 18, 42, 0.26);
+}
+
+body.fantasy-theme .club-panel {
+  padding: 20px;
+  background: linear-gradient(180deg, var(--aside-surface) 0%, #1b2241 100%);
+}
+
+body.fantasy-theme .club-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(157, 169, 230, 0.2);
+}
+
+body.fantasy-theme .eyebrow {
+  margin: 0;
+  color: #9da6d7;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+body.fantasy-theme h1 {
+  margin: 8px 0;
+  color: #f0f2ff;
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+}
+
+body.fantasy-theme .summary {
+  margin: 0;
+  color: #d8defd;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+body.fantasy-theme .stats-block,
+body.fantasy-theme .builder-block {
+  padding-top: 18px;
+}
+
+body.fantasy-theme .stats-block {
+  border-bottom: 1px solid rgba(157, 169, 230, 0.2);
+  padding-bottom: 18px;
+}
+
+body.fantasy-theme h2 {
+  margin: 0;
+  color: var(--royal);
+  font-size: 1.25rem;
+}
+
+body.fantasy-theme .metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  color: #bcc4ea;
+}
+
+body.fantasy-theme .metric-row strong {
+  color: #f0f2ff;
+}
+
+body.fantasy-theme .builder-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+body.fantasy-theme .badge-trigger {
+  width: auto;
+}
+
+body.fantasy-theme .badge-card {
+  width: min(100%, 230px);
+  aspect-ratio: 1 / 1;
+  margin: 20px auto 20px;
+  border-radius: 16px;
+  border: 1px solid var(--badge-border);
+  background: linear-gradient(180deg, var(--badge-fill) 0%, var(--badge-fill-strong) 100%);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+body.fantasy-theme .badge-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(25, 38, 109, 0.5);
+}
+
+body.fantasy-theme .badge-card:focus-visible {
+  outline: 3px solid #8390ff;
+  outline-offset: 2px;
+}
+
+body.fantasy-theme #savedImage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 10px;
+  border: 1px solid var(--badge-image-border);
+  background: #eef1ff;
+  object-fit: contain;
+}
+
+body.fantasy-theme .badge-powered-logo {
+  content: url("/src/powered-by-adobe-express-dark.png");
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  margin: 14px auto 0;
+}
+
+body.fantasy-theme .badge-meta-separator {
+  margin: 14px 0 0;
+  border-top: 1px solid rgba(157, 169, 230, 0.2);
+}
+
+body.fantasy-theme .platform-row {
+  margin: 18px 0 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #aeb8e0;
+  font-size: 0.95rem;
+}
+
+body.fantasy-theme .status-text {
+  margin: 14px 0 0;
+  min-height: 20px;
+  color: #b9c3eb;
+}
+
+body.fantasy-theme .builder-block {
+  margin-bottom: 18px;
+}
+
+body.fantasy-theme .pitch-panel {
+  background: linear-gradient(180deg, var(--main-surface) 0%, #18203a 100%);
+}
+
+body.fantasy-theme .pitch-header {
+  padding: 18px 20px 10px;
+  border-bottom: 1px solid rgba(157, 169, 230, 0.2);
+}
+
+body.fantasy-theme .pitch-header h2 {
+  margin-bottom: 4px;
+}
+
+body.fantasy-theme .pitch-header p {
+  margin: 0;
+  color: #abb7e3;
+  font-weight: 600;
+}
+
+body.fantasy-theme .lineup-board {
+  margin: 12px 14px 16px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--board-accent) 44%, #fff);
+  background: linear-gradient(180deg, var(--board-deep) 0%, var(--board-deeper) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+body.fantasy-theme .lineup-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 38%),
+    repeating-linear-gradient(
+      0deg,
+      var(--board-light-square) 0,
+      var(--board-light-square) 54px,
+      var(--board-dark-square) 54px,
+      var(--board-dark-square) 108px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--board-light-square) 0,
+      var(--board-light-square) 54px,
+      var(--board-dark-square) 54px,
+      var(--board-dark-square) 108px
+    );
+  opacity: 0.36;
+  pointer-events: none;
+}
+
+body.fantasy-theme .chess-player {
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+  border: 1px solid rgba(171, 183, 241, 0.35);
+  background: rgba(36, 44, 86, 0.72);
+  padding: 8px 6px;
+  text-align: center;
+}
+
+body.fantasy-theme .chess-player img {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 2px solid rgba(245, 247, 255, 0.78);
+  display: block;
+  margin: 0 auto 6px;
+}
+
+body.fantasy-theme .chess-player strong {
+  display: block;
+  color: #f1f4ff;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+body.fantasy-theme .chess-player span {
+  color: #bcc6ea;
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 430px) {
+  body.fantasy-theme .lineup-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  body.fantasy-theme sp-theme {
+    padding: 18px;
+  }
+
+  body.fantasy-theme .fantasy-shell {
+    grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.8fr);
+    align-items: start;
+  }
+
+  body.fantasy-theme .club-panel {
+    position: sticky;
+    top: 12px;
+  }
+
+  body.fantasy-theme .lineup-board {
+    margin: 20px 0 20px;
+    padding: 18px;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Chess Badge Lab</title>
+  <link rel="stylesheet" href="/src/style-fantasy-chess.css" />
+</head>
+
+<body class="fantasy-theme">
+  <sp-theme scale="medium" color="light" system="express">
+    <div class="fantasy-shell">
+      <aside class="club-panel card">
+        <header class="club-header">
+          <p class="eyebrow">Fantasy Chess League</p>
+          <h1>Pippe Chess Club</h1>
+          <p class="summary">
+            Build your gameweek identity with a custom badge generated via Adobe Express.
+          </p>
+        </header>
+
+        <section class="stats-block">
+          <h2>Points &amp; Rankings</h2>
+          <div class="metric-row"><span>Overall points</span><strong>1,284</strong></div>
+          <div class="metric-row"><span>Overall rank</span><strong>8,932</strong></div>
+          <div class="metric-row"><span>Total managers</span><strong>210,447</strong></div>
+          <div class="metric-row"><span>Gameweek points</span><strong>74</strong></div>
+        </section>
+
+        <section class="builder-block">
+          <div class="builder-header">
+            <h2>My Team Badge</h2>
+            <sp-button id="generateBtn" variant="accent" class="badge-trigger">Create Badge</sp-button>
+          </div>
+
+          <input type="hidden" id="promptInput"
+            value="A fantasy chess team crest, premium sports badge style, knight icon centerpiece, crisp vector look" />
+
+          <div class="badge-card" id="badgeCard" role="button" tabindex="0" aria-label="Create team badge">
+            <img id="savedImage" src="/src/chess.png" alt="Generated fantasy chess team badge preview" />
+            <img class="badge-powered-logo" src="/src/powered-by-adobe-express.png" alt="Powered by Adobe Express" />
+          </div>
+
+          <div class="badge-meta-separator" aria-hidden="true"></div>
+          <div class="platform-row">
+            <span>Server platform:</span>
+            <sp-badge size="s" variant="positive" id="platformPill">unknown</sp-badge>
+          </div>
+        </section>
+      </aside>
+
+      <main class="pitch-panel card">
+        <div class="pitch-header">
+          <h2>Pick Team</h2>
+          <p>Gameweek 27 • Deadline: Sat 21 Feb, 14:30</p>
+        </div>
+
+        <section class="lineup-board" aria-label="Fantasy chess lineup preview">
+          <div class="chess-player">
+            <img src="/src/players/magnus.png" alt="Player GM Magnus headshot" />
+            <strong>GM Magnus</strong>
+            <span>Bullet (1+0)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/hikaru.png" alt="Player GM Hikaru headshot" />
+            <strong>GM Hikaru</strong>
+            <span>Bullet (2+1)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/sara.png" alt="Player IM Sara headshot" />
+            <strong>IM Sara</strong>
+            <span>Blitz (3+2)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/vishy.png" alt="Player GM Vishy headshot" />
+            <strong>GM Vishy</strong>
+            <span>Blitz (5+0)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/divya.png" alt="Player GM Divya headshot" />
+            <strong>GM Divya</strong>
+            <span>Blitz (5+3)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/jessica.png" alt="Player NM Jessica headshot" />
+            <strong>NM Jessica</strong>
+            <span>Rapid (10+0)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/alexander.png" alt="Player GM Alexander headshot" />
+            <strong>GM Alexander</strong>
+            <span>Rapid (15+10)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/ju.png" alt="Player GM Ju headshot" />
+            <strong>GM Ju</strong>
+            <span>Classical (30+20)</span>
+          </div>
+          <div class="chess-player">
+            <img src="/src/players/wesley.png" alt="Player Wesley headshot" />
+            <strong>GM Wesley</strong>
+            <span>Chess960 (15+10)</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </sp-theme>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
