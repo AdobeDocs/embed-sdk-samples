@@ -1,20 +1,64 @@
+# .gitignore
 
-# OS and IDE generated files #
-##############################
+# Environment variables (keep .env.example for reference)
+.env
+!.env.example
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build output
+dist/
+build/
+
+# Editor and IDE files
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# macOS
 .DS_Store
+
+# Windows
+Thumbs.db
+
+# Android
+.gradle/
+local.properties
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# iOS / Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+Pods/
+Carthage/Build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Added by update-bot
 .vscode
 .history
 .idea
 .editorconfig
-
-# npm yarn
 node_modules
-package-lock.json
-yarn-error.log
 .pnp.*
 .yarn/*
-
-# keep in repo
 !.gitignore
 !.yarn.lock
 !.yarnrc.yml
@@ -23,28 +67,15 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-
-# gatsby files
-.env
 .cache
 public
-
-# cypress
 cypress/videos
 cypress/screenshots
-
-# lerna
 lerna-debug.log
-
-# local actions
 .actrc
 .secrets
 local-test.yml
-
-# yalc
 .yalc
 yalc.lock
-
-#txt
 linter-output.txt
 linter-report.txt
