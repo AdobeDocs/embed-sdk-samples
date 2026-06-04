@@ -1,0 +1,29 @@
+{
+  "name": "embed-sdk-sample-integration",
+  "version": "1.0.0",
+  "description": "Sample integration of the Adobe Express Embed SDK (v4) showing full editor, template, and image edit flows.",
+  "type": "module",
+  "private": true,
+  "keywords": [
+    "Embed SDK",
+    "Adobe Express",
+    "CCEverywhere"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.6",
+    "vite-plugin-mkcert": "^1.17.8"
+  },
+  "dependencies": {
+    "@spectrum-web-components/button": "^1.7.0",
+    "@spectrum-web-components/divider": "^1.7.0",
+    "@spectrum-web-components/field-label": "^1.7.0",
+    "@spectrum-web-components/theme": "^1.7.0",
+    "@spectrum-web-components/toast": "^1.7.0"
+  }
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embed SDK Sample Integration</title>
+</head>
+
+<body>
+  <sp-theme scale="medium" color="light" system="express">
+
+    <header>
+      <h1>Adobe Express Embed SDK — Sample Integration</h1>
+      <sp-divider size="l"></sp-divider>
+      <p>
+        A minimal integration of the Adobe Express Embed SDK (v4). Pick a flow below
+        to launch a full editor, start from a preset canvas size, or open the image-edit
+        module against an image you provide.
+      </p>
+    </header>
+
+    <section class="actions">
+      <div class="action-card">
+        <h2>Full editor</h2>
+        <p>Launch the full Express editor with a blank document.</p>
+        <sp-button id="launchEditor" size="L" variant="accent">Launch full editor</sp-button>
+      </div>
+
+      <div class="action-card">
+        <h2>Browse Instagram templates</h2>
+        <p>Open the templates browser pre-filtered to Instagram-style designs.</p>
+        <sp-button id="launchSocial" size="L" variant="primary">Browse templates</sp-button>
+      </div>
+
+      <div class="action-card">
+        <h2>Edit an image</h2>
+        <p>Pick a local image and open it in the Edit Image module.</p>
+        <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+        <sp-button id="launchEditImage" size="L" variant="secondary" disabled>Edit image</sp-button>
+      </div>
+    </section>
+
+    <sp-divider size="s"></sp-divider>
+
+    <section class="status">
+      <h3>Status</h3>
+      <pre id="statusLog" aria-live="polite">Initializing the Embed SDK…</pre>
+    </section>
+
+  </sp-theme>
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>

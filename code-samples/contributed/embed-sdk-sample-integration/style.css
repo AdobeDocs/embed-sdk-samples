@@ -1,0 +1,75 @@
+/*
+Copyright 2026 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+sp-theme {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 32px 48px;
+}
+
+header h1 {
+  font-size: var(--spectrum-heading-size-xl);
+  margin-bottom: 4px;
+}
+
+header p {
+  font-size: var(--spectrum-body-size-m);
+  color: var(--spectrum-gray-700);
+  max-width: 720px;
+}
+
+sp-divider {
+  margin: 16px 0;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.action-card {
+  border: 1px solid var(--spectrum-gray-300);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--spectrum-gray-50);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-card h2 {
+  font-size: var(--spectrum-heading-size-s);
+  margin: 0;
+}
+
+.action-card p {
+  font-size: var(--spectrum-body-size-s);
+  color: var(--spectrum-gray-700);
+  margin: 0;
+  flex: 1;
+}
+
+.status pre {
+  background: var(--spectrum-gray-100);
+  border: 1px solid var(--spectrum-gray-300);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 240px;
+  overflow: auto;
+}
+
+input[type="file"] {
+  font-family: inherit;
+  font-size: var(--spectrum-body-size-s);
+}
