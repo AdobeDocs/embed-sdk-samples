@@ -63,11 +63,11 @@ After `CCEverywhere.initialize()`, the SDK exposes three APIs. Each sample calls
 | --- | --- |
 | `editor` | `docConfig`, `appConfig`, `exportConfig`, `containerConfig` |
 | `module` | `docConfig`, `appConfig`, `exportConfig`, `containerConfig` |
-| `quickAction` | `docConfig`, `appConfig`, `exportConfig`, `modalParams` |
+| `quickAction` | `docConfig`, `appConfig`, `exportConfig`, `containerConfig` |
 
 ### Editor (`editor`)
 
-Full Adobe Express editor workflows—create blank designs, edit saved projects, or start from an asset or template.
+Embed the complete Adobe Express editor on your website—with thousands of templates and assets for creating logos, banners, flyers, and other marketing content.
 
 | Sample | SDK method | Description |
 | --- | --- | --- |
@@ -78,7 +78,7 @@ Full Adobe Express editor workflows—create blank designs, edit saved projects,
 
 ### Modules (`module`)
 
-Focused workflows without launching the full editor for every task.
+Mini-editing experiences for focused creative tasks—without loading the full editor. Covers image editing, AI image generation, template browsing, and design viewing.
 
 | Sample | SDK method | Description |
 | --- | --- | --- |
@@ -89,7 +89,7 @@ Focused workflows without launching the full editor for every task.
 
 ### Quick actions (`quickAction`)
 
-Single-purpose tools. Most samples accept an uploaded file, then run the action in a modal.
+Fast editing tools for images and videos—ideal for quick touch-ups or adjustments for social media and marketing content.
 
 #### Image
 
