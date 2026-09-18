@@ -1,0 +1,28 @@
+{
+  "name": "embed-sdk-ede",
+  "version": "1.0.0",
+  "description": "Adobe Express Embed SDK EDE sample",
+  "type": "module",
+  "keywords": [
+    "Embed SDK",
+    "Adobe Express"
+  ],
+  "author": "Davide Barranca",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0",
+    "vite-plugin-mkcert": "^2.1.0"
+  },
+  "dependencies": {
+    "@spectrum-web-components/button": "^1.12.2",
+    "@spectrum-web-components/button-group": "^1.12.2",
+    "@spectrum-web-components/divider": "^1.12.2",
+    "@spectrum-web-components/theme": "^1.12.2",
+    "dotenv": "^17.4.2"
+  }
+}
