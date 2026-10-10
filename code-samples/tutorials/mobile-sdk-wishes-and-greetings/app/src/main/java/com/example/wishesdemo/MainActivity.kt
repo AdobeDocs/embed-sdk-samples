@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         makeView()
         try {
             WishesSdk.get(this)
-            status.text = "SDK initialized: STAGE · 3P · Default client ID · en_US"
+            status.text = "SDK initialized"
         } catch (e: Exception) {
             launchButton.isEnabled = false
             status.text = "SDK initialization failed: ${e.message}"
@@ -57,9 +57,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun makeView() {
         val padding = (20 * resources.displayMetrics.density).toInt()
+        val topPadding = padding * 4
         val content = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(padding, padding, padding, padding)
+            setPadding(padding, topPadding, padding, padding)
         }
         content.addView(TextView(this).apply {
             text = "Wishes and Greetings"
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         content.addView(TextView(this).apply {
             text = "Choose a template in the SDK, customize it in the editor, then publish a PNG."
             textSize = 16f
+            setPadding(0, 12, 0, 40)
         })
         launchButton = Button(this).apply {
             id = R.id.launch_wishes
