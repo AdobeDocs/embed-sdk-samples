@@ -41,6 +41,7 @@ const configParams = {
 const { module } = await window.CCEverywhere.initialize(hostInfo, configParams);
 
 const outputContainer = document.getElementById("output-container");
+const templateVersion = document.getElementById("templateVersion");
 
 // Helper function to display output
 const displayOutput = (data, type) => {
@@ -85,28 +86,43 @@ const containerConfig = {
 
 // Launch Start from Template module
 document.getElementById("browseBtn").onclick = () => {
-  const appConfig = {
-    colorTheme: "light",
-    contentBrowseConfig: {
-      headerText: "Jump-start your inspiration with thousands of professionally designed templates",
-      searchQuery: "Instagram story",
-      hideSearchBar: false,
-      hideFilters: false,
-      shortcutPillTerms: ["Social", "Business", "Events", "Personal", "Creative"],
-      categoriesConfig: [{ category: "templates" }],
+  const callbacks = {
+    onPublish: (intent, publishParams) => {
+      console.log("intent", intent);
+      console.log("publishParams", publishParams);
+      const localData = publishParams.asset[0].data;
+      const assetType = publishParams.asset[0].type || "image";
+      displayOutput(localData, assetType);
+      window.CCEverywhere.close();
     },
-    callbacks: {
-      onPublish: (intent, publishParams) => {
-        console.log("intent", intent);
-        console.log("publishParams", publishParams);
-        const localData = publishParams.asset[0].data;
-        const assetType = publishParams.asset[0].type || "image";
-        displayOutput(localData, assetType);
-        window.CCEverywhere.close();
+    onIntentChange: () => ({ exportConfig }),
+  }
+  let appConfig;
+  if (templateVersion.value === "v1") {
+    appConfig = {
+      colorTheme: "light",
+      contentBrowseConfig: {
+        headerText: "Jump-start your inspiration with thousands of professionally designed templates",
+        searchQuery: "Instagram story",
+        hideSearchBar: false,
+        hideFilters: false,
+        shortcutPillTerms: ["Social", "Business", "Events", "Personal", "Creative"],
+        categoriesConfig: [{ category: "templates" }],
       },
-      onIntentChange: () => ({ exportConfig }),
-    },
-  };
-
+      callbacks
+    }
+  }
+  else {
+    appConfig = {
+      appVersion: "2",
+      templatesHomeConfig: {
+        tabs: [
+          "yourStuff",
+          "customTemplates",
+        ]
+      },
+      callbacks
+    }
+  }
   module.startFromContent(appConfig, null, containerConfig);
 };
