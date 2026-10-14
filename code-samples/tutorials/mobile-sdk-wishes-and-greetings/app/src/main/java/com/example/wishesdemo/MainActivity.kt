@@ -1,208 +1,100 @@
 package com.example.wishesdemo
 
 import android.os.Bundle
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ScrollView
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
 import com.adobe.express.embedsdk.AssetDataType
 import com.adobe.express.embedsdk.ButtonStyle
-import com.adobe.express.embedsdk.Callbacks
-import com.adobe.express.embedsdk.CancelCallback
-import com.adobe.express.embedsdk.ColorTheme
-import com.adobe.express.embedsdk.ErrorCallback
-import com.adobe.express.embedsdk.EventCallback
-import com.adobe.express.embedsdk.IntentChangeCallback
-import com.adobe.express.embedsdk.LoadCallback
-import com.adobe.express.embedsdk.LoadInitCallback
-import com.adobe.express.embedsdk.LoadStartCallback
+import com.adobe.express.embedsdk.ImageFileType
 import com.adobe.express.embedsdk.PublishAction
-import com.adobe.express.embedsdk.PublishCallback
 import com.adobe.express.embedsdk.PublishExportOption
-import com.adobe.express.embedsdk.PublishStartCallback
-import com.adobe.express.embedsdk.SessionFinishedCallback
-import com.adobe.express.embedsdk.WarmupCompleteCallback
+import com.adobe.express.embedsdk.PublishTarget
 import com.adobe.express.embedsdk.WishesAndGreetingsNativeAppConfig
 import com.adobe.express.embedsdk.WishesAndGreetingsNativeDocConfig
 import com.adobe.express.embedsdk.wishesandgreetings.ui.EmbedSdkWishesAndGreetingsNativeFragment
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-// AppCompatActivity is required: the SDK only tears down its editor container from an AppCompatActivity.
 class MainActivity : AppCompatActivity() {
-    private lateinit var status: TextView
-    private lateinit var result: ImageView
-    private lateinit var launchButton: Button
-    private var publishReceived = false
+    private val viewModel: WishesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        makeView()
+        setContentView(R.layout.activity_main)
+        val launchButton = findViewById<Button>(R.id.launch_wishes)
+        val status = findViewById<TextView>(R.id.status_message)
+        val result = findViewById<ImageView>(R.id.exported_image)
+
+        viewModel.status.observe(this) { status.text = it }
+        viewModel.image.observe(this) { bitmap ->
+            result.setImageBitmap(bitmap)
+            result.contentDescription = getString(R.string.published_image)
+        }
+        // LiveData only delivers while the Activity is started, so the pop never runs after
+        // the FragmentManager has saved its state, and a pending dismiss runs on return.
+        viewModel.dismissRequested.observe(this) { requested ->
+            if (requested) {
+                supportFragmentManager.popBackStack(
+                    EmbedSdkWishesAndGreetingsNativeFragment.FRAGMENT_TAG,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE,
+                )
+                viewModel.onDismissHandled()
+            }
+        }
+
         try {
             WishesSdk.get(this)
-            status.text = "SDK initialized"
+            launchButton.setOnClickListener { launchWishes() }
         } catch (e: Exception) {
             launchButton.isEnabled = false
-            status.text = "SDK initialization failed: ${e.message}"
+            viewModel.setStatus("SDK initialization failed: ${e.message}")
         }
     }
 
-    private fun makeView() {
-        val padding = (20 * resources.displayMetrics.density).toInt()
-        val topPadding = padding * 4
-        val content = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(padding, topPadding, padding, padding)
-        }
-        content.addView(TextView(this).apply {
-            text = "Wishes and Greetings"
-            textSize = 24f
-        })
-        content.addView(TextView(this).apply {
-            text = "Choose a template in the SDK, customize it in the editor, then publish a PNG."
-            textSize = 16f
-            setPadding(0, 12, 0, 40)
-        })
-        launchButton = Button(this).apply {
-            id = R.id.launch_wishes
-            text = "Open Wishes and Greetings"
-            setOnClickListener { launchWishesAndGreetingsNative() }
-        }
-        content.addView(launchButton)
-        status = TextView(this).apply {
-            id = R.id.status_message
-            textSize = 16f
-            setPadding(0, 12, 0, 12)
-        }
-        content.addView(status)
-        result = ImageView(this).apply {
-            id = R.id.exported_image
-            contentDescription = "No published image yet"
-            scaleType = ImageView.ScaleType.FIT_CENTER
-            adjustViewBounds = true
-        }
-        content.addView(
-            result,
-            LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                (320 * resources.displayMetrics.density).toInt(),
-            ),
-        )
-        setContentView(ScrollView(this).apply { addView(content) })
-    }
+    private fun launchWishes() {
+        val manager = supportFragmentManager
+        val tag = EmbedSdkWishesAndGreetingsNativeFragment.FRAGMENT_TAG
+        if (manager.isStateSaved || manager.findFragmentByTag(tag) != null) return
 
-    private fun ui(action: () -> Unit) = runOnUiThread { if (!isDestroyed) action() }
-
-    // atlas-snippet:start:launch-wishes
-    // Same call and hosting as the test app's EmbedTestFragment.launchWishesAndGreetingsNative().
-    private fun launchWishesAndGreetingsNative() {
         try {
-            publishReceived = false
-            val appConfig = WishesAndGreetingsNativeAppConfig(
-                callbacks = makeCallbacks(),
-                onDismiss = { ui { dismissWishes() } },
-                colorTheme = ColorTheme.LIGHTEST,
-            )
-            val wishesFragment = WishesSdk.get(this).module?.wishesAndGreetingsNative(
+            val module = WishesSdk.get(this).module
+            if (module == null) {
+                viewModel.setStatus("Wishes and Greetings isn't available.")
+                return
+            }
+            viewModel.onLaunch()
+            val fragment = module.wishesAndGreetingsNative(
                 wishesAndGreetingsNativeDocConfig = WishesAndGreetingsNativeDocConfig(),
-                wishesAndGreetingsNativeAppConfig = appConfig,
+                wishesAndGreetingsNativeAppConfig = WishesAndGreetingsNativeAppConfig(
+                    // Pass ViewModel-owned handlers, never lambdas that capture this Activity.
+                    callbacks = viewModel.callbacks,
+                    onDismiss = viewModel.onDismiss,
+                ),
                 exportConfig = listOf(
                     PublishExportOption(
                         id = "returnImage",
-                        label = "Use image",
+                        label = getString(R.string.export_label),
                         style = ButtonStyle(),
                         action = PublishAction(
-                            target = "publish",
-                            publishFileType = "image/png",
+                            target = PublishTarget.PUBLISH.value,
+                            publishFileType = ImageFileType.PNG.mimeType,
                             outputType = AssetDataType.BASE64,
                             closeTargetOnExport = true,
-                            // As in the test app's Wishes export config; otherwise disabled until the first edit.
+                            // Otherwise the button stays disabled until the first edit.
                             enableByDefault = true,
                         ),
                     ),
                 ),
-            ) ?: return
-            // On a template tap the SDK replaces android.R.id.content with its editor and pops back on close.
-            supportFragmentManager
-                .beginTransaction()
-                .replace(android.R.id.content, wishesFragment, EmbedSdkWishesAndGreetingsNativeFragment.FRAGMENT_TAG)
-                .addToBackStack(EmbedSdkWishesAndGreetingsNativeFragment.FRAGMENT_TAG)
+            )
+            // Selecting a template opens the SDK's editor over this fragment; closing it returns here.
+            manager.beginTransaction()
+                .replace(android.R.id.content, fragment, tag)
+                .addToBackStack(tag)
                 .commit()
         } catch (e: Exception) {
-            status.text = "Could not open Wishes and Greetings: ${e.message}"
+            viewModel.setStatus("Could not open Wishes and Greetings: ${e.message}")
         }
     }
-    // atlas-snippet:end:launch-wishes
-
-    private fun dismissWishes() {
-        if (!supportFragmentManager.isStateSaved) {
-            supportFragmentManager.popBackStack(
-                EmbedSdkWishesAndGreetingsNativeFragment.FRAGMENT_TAG,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE,
-            )
-        }
-    }
-
-    private fun makeCallbacks(): Callbacks = object : Callbacks {
-        override var onLoadInit: LoadInitCallback = {}
-        override var onLoadStart: LoadStartCallback? = null
-        override var onLoad: LoadCallback? = null
-        override var onCancel: CancelCallback = { _, _ -> ui { status.text = "Session cancelled." } }
-        override var onPublishStart: PublishStartCallback? = null
-        override var onError: ErrorCallback<Any>? = { error ->
-            ui { status.text = "SDK error: $error" }
-        }
-        override var onEvent: EventCallback? = null
-        override var onIntentChange: IntentChangeCallback? = null
-        override var onWarmupComplete: WarmupCompleteCallback? = null
-
-        // Fires after the SDK has removed its editor; then return from browse to show the image.
-        override var onSessionFinished: SessionFinishedCallback? = {
-            ui { if (publishReceived) dismissWishes() }
-        }
-        override var onPublish: PublishCallback? = { _, params ->
-            ui {
-                publishReceived = true
-                val assets = params.asset.orEmpty()
-                val asset = assets.firstOrNull { it.dataType == AssetDataType.BASE64 }
-                    ?: assets.firstOrNull { it.dataType == AssetDataType.URL }
-                val data = asset?.getData()?.takeIf { it.isNotBlank() }
-                if (data == null) {
-                    status.text = "Publish returned no supported image."
-                } else {
-                    val type = if (asset.dataType == AssetDataType.BASE64) {
-                        ExportImageInput.Type.BASE64
-                    } else {
-                        ExportImageInput.Type.LOCAL_URI
-                    }
-                    showExportedImage(ExportImageInput(type, data))
-                }
-            }
-        }
-    }
-
-    // atlas-snippet:start:display-exported-image
-    fun showExportedImage(input: ExportImageInput): Job = lifecycleScope.launch {
-        try {
-            val bitmap = withContext(Dispatchers.IO) {
-                ExportImageDecoder.decode(input, contentResolver)
-            }
-            result.setImageBitmap(bitmap)
-            result.contentDescription = "Published PNG image"
-            status.text = "Image received."
-        } catch (cancelled: CancellationException) {
-            throw cancelled
-        } catch (_: Exception) {
-            status.text = "Returned image could not be displayed; try publishing again."
-        }
-    }
-    // atlas-snippet:end:display-exported-image
 }

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wishes demo</string>
+    <string name="title">Wishes and Greetings</string>
+    <string name="description">Choose a template, customize it in the editor, then select Use image to bring it back here.</string>
+    <string name="launch_wishes">Open Wishes and Greetings</string>
+    <string name="export_label">Use image</string>
+    <string name="no_image">No published image yet</string>
+    <string name="published_image">Published image</string>
+</resources>
